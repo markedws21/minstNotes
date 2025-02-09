@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:minstnotes/Pages/menu_notes.dart';
+import 'package:minstnotes/Widgets/drawer_down.dart';
 import 'package:minstnotes/Widgets/splash_screen.dart';
 
 final GoRouter routers = GoRouter(
@@ -14,12 +14,18 @@ final GoRouter routers = GoRouter(
       }
     ),
     GoRoute(
+      name: '/drawer',
+      path: '/drawer',
+      builder: (context,state) {
+        return const DrawerDown();
+      }
+    ),
+    GoRoute(
       name: '/menu',
       path: '/menu',
-      pageBuilder: (context, state) => MaterialPage(
-        key: state.pageKey,
-        child: const MenuNotesPage(),
-      ),
+      builder: (context,state) {
+        return const MenuNotesPage();
+      }
     ),
   ]
 );

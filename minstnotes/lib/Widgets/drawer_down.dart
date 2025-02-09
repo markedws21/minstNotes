@@ -1,117 +1,82 @@
-import 'dart:developer';
-
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:minstnotes/Pages/config_page.dart';
+import 'package:minstnotes/Pages/favoritos_page.dart';
 import 'package:minstnotes/Pages/menu_notes.dart';
+import 'package:minstnotes/Pages/perfil_page.dart';
+//import 'package:minstnotes/Pages/menu_notes_page.dart';
+//import 'package:minstnotes/Pages/favorites_page.dart';
+//import 'package:minstnotes/Pages/settings_page.dart';
+//import 'package:minstnotes/Pages/profile_page.dart';
 
 class DrawerDown extends StatefulWidget {
   const DrawerDown({super.key});
 
   @override
-  State<DrawerDown> createState() => _MyHomePageState();
+  State<DrawerDown> createState() => _DrawerDownState();
 }
 
-class _MyHomePageState extends State<DrawerDown> {
-  final _pageController = PageController(initialPage: 0);
-
+class _DrawerDownState extends State<DrawerDown> {
+  final PageController _pageController = PageController(initialPage: 0);
   final NotchBottomBarController _controller = NotchBottomBarController(index: 0);
 
-  int maxCount = 5;
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-
-    super.dispose();
-  }
+  final List<Widget> _pages = [
+    const MenuNotesPage(),
+    const FavoritosPage(),
+    const ConfigPage(),
+    const PerfilPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    /// widget list
-    final List<Widget> bottomBarPages = [
-      MenuNotesPage(
-        controller: (_controller),
-      ),
-      const MenuNotesPage(),
-      const MenuNotesPage(),
-      const MenuNotesPage(),
-      const MenuNotesPage(),
-    ];
     return Scaffold(
       body: PageView(
         controller: _pageController,
         physics: const NeverScrollableScrollPhysics(),
-        children: List.generate(bottomBarPages.length, (index) => bottomBarPages[index]),
+        children: _pages,
       ),
-      extendBody: true,
-      bottomNavigationBar: (bottomBarPages.length <= maxCount)
-          ? AnimatedNotchBottomBar(
-              notchBottomBarController: _controller,
-              color: Colors.white,
-              showLabel: true,
-              textOverflow: TextOverflow.visible,
-              maxLine: 1,
-              shadowElevation: 5,
-              kBottomRadius: 28.0,
-              notchColor: Colors.black87,
-              removeMargins: false,
-              bottomBarWidth: 500,
-              showShadow: false,
-              durationInMilliSeconds: 300,
-
-              itemLabelStyle: const TextStyle(fontSize: 10),
-
-              elevation: 1,
-              bottomBarItems: const [
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.home_filled,
-                    color: Colors.blueGrey,
-                  ),
-                  activeItem: Icon(
-                    Icons.home_filled,
-                    color: Colors.blueAccent,
-                  ),
-                  itemLabel: 'Menú',
-                ),
-                BottomBarItem(
-                  inActiveItem: Icon(Icons.star, color: Colors.blueGrey),
-                  activeItem: Icon(
-                    Icons.star,
-                    color: Colors.blueAccent,
-                  ),
-                  itemLabel: 'Page 2',
-                ),
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.settings,
-                    color: Colors.blueGrey,
-                  ),
-                  activeItem: Icon(
-                    Icons.settings,
-                    color: Colors.pink,
-                  ),
-                  itemLabel: 'Page 3',
-                ),
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.person,
-                    color: Colors.blueGrey,
-                  ),
-                  activeItem: Icon(
-                    Icons.person,
-                    color: Colors.yellow,
-                  ),
-                  itemLabel: 'Perfil',
-                ),
-              ],
-              onTap: (index) {
-                log('current selected index $index');
-                _pageController.jumpToPage(index);
-              },
-              kIconSize: 24.0,
-            )
-          : null,
+      bottomNavigationBar: AnimatedNotchBottomBar(
+        notchBottomBarController: _controller,
+        color: Colors.white,
+        showLabel: true,
+        textOverflow: TextOverflow.visible,
+        maxLine: 1,
+        shadowElevation: 5,
+        kBottomRadius: 28.0,
+        notchColor: Colors.black87,
+        removeMargins: false,
+        bottomBarWidth: 500,
+        showShadow: false,
+        durationInMilliSeconds: 300,
+        itemLabelStyle: const TextStyle(fontSize: 10),
+        elevation: 1,
+        bottomBarItems: const [
+          BottomBarItem(
+            inActiveItem: Icon(Icons.home_filled, color: Colors.blueGrey),
+            activeItem: Icon(Icons.home_filled, color: Colors.blueAccent),
+            itemLabel: 'Notas',
+          ),
+          BottomBarItem(
+            inActiveItem: Icon(Icons.star, color: Colors.blueGrey),
+            activeItem: Icon(Icons.star, color: Colors.blueAccent),
+            itemLabel: 'Favoritos',
+          ),
+          BottomBarItem(
+            inActiveItem: Icon(Icons.settings, color: Colors.blueGrey),
+            activeItem: Icon(Icons.settings, color: Colors.pink),
+            itemLabel: 'Ajustes',
+          ),
+          BottomBarItem(
+            inActiveItem: Icon(Icons.person, color: Colors.blueGrey),
+            activeItem: Icon(Icons.person, color: Colors.yellow),
+            itemLabel: 'Perfil',
+          ),
+        ],
+        onTap: (index) {
+          _pageController.jumpToPage(index);
+        },
+        kIconSize: 24.0,
+      ),
     );
   }
 }

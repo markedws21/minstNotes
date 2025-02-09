@@ -15,7 +15,7 @@ class SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
-        context.go('/menu');
+        context.go('/drawer');
       }
     });
   }
@@ -23,7 +23,7 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF023657),
+      backgroundColor: const Color.fromARGB(255, 30, 159, 199),
       body: Center(
         child: TweenAnimationBuilder(
           tween: Tween<double>(begin: 0.0, end: 1.0),

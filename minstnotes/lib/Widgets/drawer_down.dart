@@ -4,10 +4,6 @@ import 'package:minstnotes/Pages/config_page.dart';
 import 'package:minstnotes/Pages/favoritos_page.dart';
 import 'package:minstnotes/Pages/menu_notes.dart';
 import 'package:minstnotes/Pages/perfil_page.dart';
-//import 'package:minstnotes/Pages/menu_notes_page.dart';
-//import 'package:minstnotes/Pages/favorites_page.dart';
-//import 'package:minstnotes/Pages/settings_page.dart';
-//import 'package:minstnotes/Pages/profile_page.dart';
 
 class DrawerDown extends StatefulWidget {
   const DrawerDown({super.key});
@@ -43,7 +39,7 @@ class _DrawerDownState extends State<DrawerDown> {
         maxLine: 1,
         shadowElevation: 5,
         kBottomRadius: 28.0,
-        notchColor: Colors.black87,
+        notchColor: const Color.fromARGB(255, 30, 159, 199),
         removeMargins: false,
         bottomBarWidth: 500,
         showShadow: false,
@@ -53,22 +49,22 @@ class _DrawerDownState extends State<DrawerDown> {
         bottomBarItems: const [
           BottomBarItem(
             inActiveItem: Icon(Icons.home_filled, color: Colors.blueGrey),
-            activeItem: Icon(Icons.home_filled, color: Colors.blueAccent),
+            activeItem: Icon(Icons.home_filled, color: Colors.white),
             itemLabel: 'Notas',
           ),
           BottomBarItem(
             inActiveItem: Icon(Icons.star, color: Colors.blueGrey),
-            activeItem: Icon(Icons.star, color: Colors.blueAccent),
+            activeItem: Icon(Icons.star, color: Colors.white),
             itemLabel: 'Favoritos',
           ),
           BottomBarItem(
             inActiveItem: Icon(Icons.settings, color: Colors.blueGrey),
-            activeItem: Icon(Icons.settings, color: Colors.pink),
+            activeItem: Icon(Icons.settings, color: Colors.white),
             itemLabel: 'Ajustes',
           ),
           BottomBarItem(
             inActiveItem: Icon(Icons.person, color: Colors.blueGrey),
-            activeItem: Icon(Icons.person, color: Colors.yellow),
+            activeItem: Icon(Icons.person, color: Colors.white),
             itemLabel: 'Perfil',
           ),
         ],

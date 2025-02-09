@@ -16,6 +16,7 @@ class FavoritosPageState extends State<FavoritosPage> {
   Widget build(BuildContext context) {
     return DefaultScaffold(
       title: 'Favoritos',
+      titleIcon: Icons.star,
       body: ValueListenableBuilder(
         valueListenable: _notesBox.listenable(),
         builder: (context, Box box, _) {

@@ -13,6 +13,7 @@ class PerfilPageState extends State<PerfilPage> {
   Widget build(BuildContext context) {
     return const DefaultScaffold(
       title: 'Perfil',
+      titleIcon: Icons.person,
       body: Center(child: Text('Perfil')),
     );
   }

@@ -26,6 +26,7 @@ class MenuNotesPageState extends State<MenuNotesPage> {
   Widget build(BuildContext context) {
     return DefaultScaffold(
       title: 'Mis Notas',
+      titleIcon: Icons.sticky_note_2,
       body: ValueListenableBuilder(
         valueListenable: _notesBox.listenable(),
         builder: (context, Box box, _) {
@@ -39,7 +40,6 @@ class MenuNotesPageState extends State<MenuNotesPage> {
             } else {
               noteData['color'] ??= Colors.white.value;
               noteData['favorite'] ??= false;
-              noteData['image'] ??= null;
               _notesBox.putAt(i, noteData);
             }
             notes.add({'index': i, ...noteData});
